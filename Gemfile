@@ -41,11 +41,13 @@ group :development, :test do
   gem "brakeman", require: false
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
-  gem 'factory_bot_rails', group: :test
+  gem "factory_bot_rails", group: :test
   gem "rubocop-rails-omakase", require: false
-  gem 'rspec-rails', group: :test
-  gem 'rspec-parameterized'
-  gem 'shoulda-matchers'
+  gem "rspec-rails", group: :test
+  gem "rspec-parameterized"
+  gem "shoulda-matchers"
+
+  gem "mutant-rspec"
 end
 
 group :development do
