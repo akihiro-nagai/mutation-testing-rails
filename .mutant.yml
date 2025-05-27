@@ -1,0 +1,23 @@
+integration:
+  name: rspec
+  arguments:
+    - spec/models/user_spec.rb
+
+jobs: 1
+
+requires:
+  - application
+  - application_record
+  - user
+includes:
+  - config
+  - app/models/
+
+matcher:
+  subjects:
+    - User
+
+# environment_variables:
+#   RAILS_ENV: test
+
+usage: opensource
