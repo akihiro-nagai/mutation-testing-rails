@@ -9,4 +9,8 @@ class User < ApplicationRecord
 
     false
   end
+
+  def published_blogs
+    blogs.where(status: "published")
+  end
 end

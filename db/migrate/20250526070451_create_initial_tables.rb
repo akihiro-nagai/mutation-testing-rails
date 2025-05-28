@@ -16,7 +16,7 @@ class CreateInitialTables < ActiveRecord::Migration[8.0]
 
     create_table :blogs do |t|
       t.string :title, null: false
-      t.references :category, null: false, foreign_key: true
+      t.references :category, foreign_key: true
       t.text :content, null: false
       t.references :user, null: false, foreign_key: true
       t.string :status, null: false, default: 'draft' # Possible values: draft, published, archived
