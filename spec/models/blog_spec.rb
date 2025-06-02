@@ -62,16 +62,11 @@ RSpec.describe Blog, type: :model do
   end
 
   describe 'concerns' do
-    ## coplilot が提案したがテストする意味はあるのか
-    # it 'includes ContentAvailable' do
-    #  expect(Blog.included_modules).to include(ContentAvailable)
-    # end
-
     describe '#short_content' do
       let(:blog) { create(:blog, content: 'This is a sample blog content.') }
 
       it 'returns the first 20 characters of content' do
-        expect(blog.short_content).to eq('This is a sample...')
+        expect(blog.short_content).to eq('This is a sample ...')
       end
 
       it 'returns the full content if it is shorter than 30 characters' do
@@ -79,20 +74,10 @@ RSpec.describe Blog, type: :model do
         expect(short_blog.short_content).to eq('Short content.')
       end
 
-      # it 'returns "[no content]" if content is nil' do
-      #  blog = create(:blog, content: nil)
-      #  expect(blog.short_content).to eq('[no content]')
-      # end
-
-      # it 'returns "[no content]" if content is an empty string' do
-      #  blog = create(:blog, content: '')
-      #  expect(blog.short_content).to eq('[no content]')
-      # end
-
-      # it 'returns "[no content]" if content is blank (spaces only)' do
-      #  blog = create(:blog, content: '   ')
-      #  expect(blog.short_content).to eq('[no content]')
-      # end
+      it 'returns "[no content]" if content is an empty string' do
+       blog = create(:blog, content: '')
+       expect(blog.short_content).to eq('[no content]')
+      end
     end
   end
 end

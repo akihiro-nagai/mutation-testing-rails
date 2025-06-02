@@ -1,4 +1,18 @@
 services:
+  rails:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/Users/i.akihiro.nagai/work/tmp/mutant-test/mutation-testing-rails:cached
+      #- ./container/bundle:/usr/local/bundle:cached
+    depends_on:
+      - db
+    command: tail -f /dev/null
+    environment:
+      - DB_HOST=db
+      - DB_PORT=3306
+
   db:
     restart: always
     image: mysql:8.0.32

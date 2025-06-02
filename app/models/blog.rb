@@ -24,7 +24,8 @@ class Blog < ApplicationRecord
 
     # 文字数のバリエーションを増やしても意味はないので
     # mutant:disable  <= 効かない。メソッドレベルでしか制御できないようだ
-    content.truncate(20, separator: " ")
+    # content.truncate(20, separator: " ")
+    content.truncate(20)
   end
 
   private
@@ -33,8 +34,6 @@ class Blog < ApplicationRecord
     # mutant: 意味のない条件分岐を追加すると検出してくれる
     # unless VALID_STATUSES.include?(status) || status.nil?
     unless VALID_STATUSES.include?(status)
-      # join() の中のバリエーションを増やしても意味はないので
-      # mutant:disable  <= 効かない。メソッドレベルでしか制御できないようだ
       errors.add(:status, "must be one of: #{VALID_STATUSES.join(', ')}")
     end
   end
