@@ -31,10 +31,10 @@ RSpec.describe User, type: :model do
       end
 
       context 'when username is admin' do
-        it 'returns true' do
-          subject.username = 'admin'
-          expect(subject.is_admin?).to be true
-        end
+       it 'returns true' do
+         subject.username = 'admin'
+         expect(subject.is_admin?).to be true
+       end
       end
     end
   end

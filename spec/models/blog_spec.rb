@@ -7,7 +7,6 @@ RSpec.describe Blog, type: :model do
     describe 'validate_status' do
       # memo: archived のテストが抜けているが、これは mutant で検出できない
       valid_statuses = %w[draft published]
-      # 正しくは ↓
       # valid_statuses = %w[draft published archived]
 
       valid_statuses.each do |valid_status|
@@ -63,10 +62,10 @@ RSpec.describe Blog, type: :model do
   end
 
   describe 'concerns' do
-    # coplilot が提案したがテストする意味はあるのか
-    it 'includes ContentAvailable' do
-      expect(Blog.included_modules).to include(ContentAvailable)
-    end
+    ## coplilot が提案したがテストする意味はあるのか
+    # it 'includes ContentAvailable' do
+    #  expect(Blog.included_modules).to include(ContentAvailable)
+    # end
 
     describe '#short_content' do
       let(:blog) { create(:blog, content: 'This is a sample blog content.') }
@@ -79,6 +78,21 @@ RSpec.describe Blog, type: :model do
         short_blog = create(:blog, content: 'Short content.')
         expect(short_blog.short_content).to eq('Short content.')
       end
+
+      # it 'returns "[no content]" if content is nil' do
+      #  blog = create(:blog, content: nil)
+      #  expect(blog.short_content).to eq('[no content]')
+      # end
+
+      # it 'returns "[no content]" if content is an empty string' do
+      #  blog = create(:blog, content: '')
+      #  expect(blog.short_content).to eq('[no content]')
+      # end
+
+      # it 'returns "[no content]" if content is blank (spaces only)' do
+      #  blog = create(:blog, content: '   ')
+      #  expect(blog.short_content).to eq('[no content]')
+      # end
     end
   end
 end
